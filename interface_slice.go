@@ -71,6 +71,15 @@ func (s Slice) Map(fn func(element interface{}, index int) interface{}) Slice {
 	})
 }
 
+// Reduce executes the reducer function on each element of the array and returns
+// a single output value.
+func (s Slice) Reduce(
+	fn func(previousValue interface{}, currentValue interface{}, currentIndex int) interface{},
+	initialValue interface{},
+) interface{} {
+	return reduce(s, fn, initialValue)
+}
+
 // Some ...
 func (s Slice) Some(fn func(element interface{}, index int) bool) bool {
 	return some(s, func(element interface{}, index int) bool {
