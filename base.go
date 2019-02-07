@@ -143,6 +143,23 @@ func mapToInterfaceSlice(
 	return mapped
 }
 
+func reduce(
+	slice interface{},
+	fn func(previousValue interface{}, currentValue interface{}, currentIndex int) interface{},
+	initialValue interface{},
+) interface{} {
+	previousValue := initialValue
+	sliceValue := reflect.ValueOf(slice)
+	sliceLen := sliceValue.Len()
+
+	for index := 0; index < sliceLen; index++ {
+		currentValue := sliceValue.Index(index).Interface()
+		previousValue = fn(previousValue, currentValue, index)
+	}
+
+	return previousValue
+}
+
 func some(
 	slice interface{},
 	fn func(element interface{}, index int) bool,
