@@ -23,14 +23,14 @@ Already implemented:
 - indexOf()
 - lastIndexOf()
 - map() *Only method returning interface{} slice is implemented for now.*
+- reduce()
+- reduceRight()
 - some()
 
 
 To be implemented:
 
 - concat()
-- reduce()
-- reduceRight()
 - reverse()
 - slice()
 - sort()

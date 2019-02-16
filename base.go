@@ -160,6 +160,23 @@ func reduce(
 	return previousValue
 }
 
+func reduceRight(
+	slice interface{},
+	fn func(previousValue interface{}, currentValue interface{}, currentIndex int) interface{},
+	initialValue interface{},
+) interface{} {
+	previousValue := initialValue
+	sliceValue := reflect.ValueOf(slice)
+	sliceLen := sliceValue.Len()
+
+	for index := sliceLen - 1; index >= 0; index-- {
+		currentValue := sliceValue.Index(index).Interface()
+		previousValue = fn(previousValue, currentValue, index)
+	}
+
+	return previousValue
+}
+
 func some(
 	slice interface{},
 	fn func(element interface{}, index int) bool,
