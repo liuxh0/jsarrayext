@@ -80,6 +80,15 @@ func (s Slice) Reduce(
 	return reduce(s, fn, initialValue)
 }
 
+// ReduceRight executes the reducer function on each element of the array from
+// right to left and returns a single output value.
+func (s Slice) ReduceRight(
+	fn func(previousValue interface{}, currentValue interface{}, currentIndex int) interface{},
+	initialValue interface{},
+) interface{} {
+	return reduceRight(s, fn, initialValue)
+}
+
 // Some ...
 func (s Slice) Some(fn func(element interface{}, index int) bool) bool {
 	return some(s, func(element interface{}, index int) bool {

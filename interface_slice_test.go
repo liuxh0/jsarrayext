@@ -470,6 +470,21 @@ func TestSliceMap(t *testing.T) {
 	})
 }
 
+func TestSliceReduceRight(t *testing.T) {
+	// It should return the correct result.
+	t.Run("", func(t *testing.T) {
+		s := Slice([]interface{}{"A", "B", "C"})
+
+		r := s.ReduceRight(func(previousValue interface{}, currentValue interface{}, currentIndex int) interface{} {
+			return previousValue.(string) + currentValue.(string)
+		}, "0")
+
+		if r != "0CBA" {
+			t.Error(r)
+		}
+	})
+}
+
 func TestSliceSome(t *testing.T) {
 	// It should return false in case of empty slice.
 	t.Run("", func(t *testing.T) {
