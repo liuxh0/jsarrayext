@@ -86,12 +86,12 @@ func (s IntSlice) Reduce(
 
 // ReduceRight executes the reducer function on each element of the array from
 // right to left and returns a single output value.
-func (s IntSlice) reduceRight(
+func (s IntSlice) ReduceRight(
 	fn func(previousValue interface{}, currentValue int, currentIndex int) interface{},
 	initialValue interface{},
 ) interface{} {
 	return reduceRight(s, func(previousValue interface{}, currentValue interface{}, currentIndex int) interface{} {
-		return fn(previousValue, currentIndex, currentIndex)
+		return fn(previousValue, currentValue.(int), currentIndex)
 	}, initialValue)
 }
 

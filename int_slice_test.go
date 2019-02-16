@@ -427,6 +427,21 @@ func TestIntSliceMap(t *testing.T) {
 	})
 }
 
+func TestIntSliceReduceRight(t *testing.T) {
+	// It should return the correct result.
+	t.Run("", func(t *testing.T) {
+		s := IntSlice([]int{1, 2, 3})
+
+		r := s.ReduceRight(func(previousValue interface{}, currentValue int, currentIndex int) interface{} {
+			return previousValue.(int)*10 + currentValue
+		}, 1)
+
+		if r != 1321 {
+			t.Error(r)
+		}
+	})
+}
+
 func TestIntSliceSome(t *testing.T) {
 	// It should return false in case of empty slice.
 	t.Run("", func(t *testing.T) {
