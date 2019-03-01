@@ -25,13 +25,13 @@ Already implemented:
 - map() *Only method returning interface{} slice is implemented for now.*
 - reduce()
 - reduceRight()
+- reverse()
 - some()
 
 
 To be implemented:
 
 - concat()
-- reverse()
 - slice()
 - sort()
 

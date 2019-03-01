@@ -1,6 +1,9 @@
 package jsarrayext
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestIntSliceEvery(t *testing.T) {
 	// It should return true in case of empty slice.
@@ -440,6 +443,15 @@ func TestIntSliceReduceRight(t *testing.T) {
 			t.Error(r)
 		}
 	})
+}
+
+func TestIntSliceReverse(t *testing.T) {
+	s := IntSlice([]int{1, 2, 3})
+	r := s.Reverse()
+
+	if reflect.DeepEqual([]int(r), []int{3, 2, 1}) == false {
+		t.Error()
+	}
 }
 
 func TestIntSliceSome(t *testing.T) {
