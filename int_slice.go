@@ -95,6 +95,11 @@ func (s IntSlice) ReduceRight(
 	}, initialValue)
 }
 
+// Reverse reverses an array in place and returns the reversed array.
+func (s IntSlice) Reverse() IntSlice {
+	return reverse(s).(IntSlice)
+}
+
 // Some ...
 func (s IntSlice) Some(fn func(element int, index int) bool) bool {
 	return some(s, func(element interface{}, index int) bool {

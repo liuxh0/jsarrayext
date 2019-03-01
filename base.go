@@ -177,6 +177,22 @@ func reduceRight(
 	return previousValue
 }
 
+func reverse(
+	slice interface{},
+) interface{} {
+	sliceLen := reflect.ValueOf(slice).Len()
+	swapper := reflect.Swapper(slice)
+
+	for index := 0; index < (sliceLen / 2); index++ {
+		reversedIndex := sliceLen - index - 1
+		if index != reversedIndex {
+			swapper(index, reversedIndex)
+		}
+	}
+
+	return slice
+}
+
 func some(
 	slice interface{},
 	fn func(element interface{}, index int) bool,
