@@ -106,3 +106,10 @@ func (s IntSlice) Some(fn func(element int, index int) bool) bool {
 		return fn(element.(int), index)
 	})
 }
+
+// Sort sorts the elements of an array in place and returns the array.
+func (s IntSlice) Sort(fn func(firstElement int, secondElement int) int) IntSlice {
+	return sortSlice(s, func(firstElement interface{}, secondElement interface{}) int {
+		return fn(firstElement.(int), secondElement.(int))
+	}).(IntSlice)
+}

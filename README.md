@@ -27,13 +27,12 @@ Already implemented:
 - reduceRight()
 - reverse()
 - some()
+- sort()
 
 
 To be implemented:
 
 - concat()
-- slice()
-- sort()
 
 Won't implement:
 
@@ -42,6 +41,7 @@ Won't implement:
 - join()
 - pop(), unshift() *use append() instead*
 - push(), shift(), splice() *see https://github.com/golang/go/wiki/SliceTricks*
+- slice()
 - toLocalString()
 - toSource()
 - toString()

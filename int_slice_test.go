@@ -540,3 +540,14 @@ func TestIntSliceSome(t *testing.T) {
 		}
 	})
 }
+
+func TestIntSliceSort(t *testing.T) {
+	s := IntSlice([]int{4, 3, 1, 5, 2})
+	r := s.Sort(func(firstElement int, secondElement int) int {
+		return firstElement - secondElement
+	})
+
+	if reflect.DeepEqual([]int(r), []int{1, 2, 3, 4, 5}) == false {
+		t.Error()
+	}
+}
