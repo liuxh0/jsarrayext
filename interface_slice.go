@@ -100,3 +100,8 @@ func (s Slice) Some(fn func(element interface{}, index int) bool) bool {
 		return fn(element, index)
 	})
 }
+
+// Sort sorts the elements of an array in place and returns the array.
+func (s Slice) Sort(fn func(firstElement interface{}, secondElement interface{}) int) Slice {
+	return sortSlice(s, fn).(Slice)
+}

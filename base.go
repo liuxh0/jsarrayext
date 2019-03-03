@@ -1,6 +1,9 @@
 package jsarrayext
 
-import "reflect"
+import (
+	"reflect"
+	"sort"
+)
 
 func every(
 	slice interface{},
@@ -205,4 +208,19 @@ func some(
 	}
 
 	return false
+}
+
+func sortSlice(
+	slice interface{},
+	fn func(firstElement interface{}, secondElement interface{}) int,
+) interface{} {
+	sliceValue := reflect.ValueOf(slice)
+
+	sort.Slice(slice, func(i, j int) bool {
+		firstElement := sliceValue.Index(i).Interface()
+		secondElement := sliceValue.Index(j).Interface()
+		return fn(firstElement, secondElement) < 0
+	})
+
+	return slice
 }

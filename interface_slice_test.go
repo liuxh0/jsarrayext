@@ -583,3 +583,14 @@ func TestSliceSome(t *testing.T) {
 		}
 	})
 }
+
+func TestSliceSort(t *testing.T) {
+	s := Slice([]interface{}{4, 3, 1, 5, 2})
+	r := s.Sort(func(firstElement interface{}, secondElement interface{}) int {
+		return firstElement.(int) - secondElement.(int)
+	})
+
+	if reflect.DeepEqual([]interface{}(r), []interface{}{1, 2, 3, 4, 5}) == false {
+		t.Error()
+	}
+}
