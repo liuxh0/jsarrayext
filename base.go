@@ -5,6 +5,26 @@ import (
 	"sort"
 )
 
+func concat(slices ...interface{}) interface{} {
+	newSliceLen := 0
+	for _, v := range slices {
+		newSliceLen += reflect.ValueOf(v).Len()
+	}
+
+	newSlice := make([]interface{}, newSliceLen)
+	index := 0
+	for _, slice := range slices {
+		sliceValue := reflect.ValueOf(slice)
+		sliceLen := sliceValue.Len()
+		for i := 0; i < sliceLen; i++ {
+			newSlice[index] = sliceValue.Index(i).Interface()
+			index++
+		}
+	}
+
+	return newSlice
+}
+
 func every(
 	slice interface{},
 	fn func(element interface{}, index int) bool,

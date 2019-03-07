@@ -11,8 +11,9 @@ Due to Golang language restrictions, optional parameters are not supported. Furt
 
 ## Development Progress
 
-Already implemented:
+Implemented:
 
+- concat()
 - every()
 - fill()
 - filter()
@@ -22,17 +23,12 @@ Already implemented:
 - includes()
 - indexOf()
 - lastIndexOf()
-- map() *Only method returning interface{} slice is implemented for now.*
+- map()
 - reduce()
 - reduceRight()
 - reverse()
 - some()
 - sort()
-
-
-To be implemented:
-
-- concat()
 
 Won't implement:
 

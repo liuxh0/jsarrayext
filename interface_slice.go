@@ -3,6 +3,18 @@ package jsarrayext
 // Slice ...
 type Slice []interface{}
 
+// Concat merges two or more slices.
+func (s Slice) Concat(slices ...[]interface{}) Slice {
+	slicesSlice := make([]interface{}, (len(slices) + 1))
+	slicesSlice[0] = s
+	for i := 0; i < len(slices); i++ {
+		slicesSlice[i+1] = slices[i]
+	}
+
+	r := concat(slicesSlice...)
+	return r.([]interface{})
+}
+
 // Every ...
 func (s Slice) Every(fn func(element interface{}, index int) bool) bool {
 	return every(s, func(element interface{}, index int) bool {
