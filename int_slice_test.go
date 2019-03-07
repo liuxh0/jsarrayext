@@ -5,6 +5,17 @@ import (
 	"testing"
 )
 
+func TestIntSliceConcat(t *testing.T) {
+	s := IntSlice([]int{1, 2, 3})
+	s1 := []interface{}{4, 5, 6}
+	s2 := []interface{}{7, 8, 9}
+
+	r := s.Concat(s1, s2)
+	if reflect.DeepEqual([]interface{}(r), []interface{}{1, 2, 3, 4, 5, 6, 7, 8, 9}) == false {
+		t.Error()
+	}
+}
+
 func TestIntSliceEvery(t *testing.T) {
 	// It should return true in case of empty slice.
 	t.Run("", func(t *testing.T) {
